@@ -1,10 +1,9 @@
-SUBDIRS = foo bar baz
+SUBDIRS = src tests
 
 .PHONY: subdirs $(SUBDIRS)
 
 subdirs: $(SUBDIRS)
 
 $(SUBDIRS):
-        $(MAKE) -C $@
+	make -C $@
 
-foo: baz
