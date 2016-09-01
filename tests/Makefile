@@ -6,3 +6,4 @@ checkRomanNumeralCalculator.o: checkRomanNumeralCalculator.c
 
 clean:
 	rm *.o
+	rm testromannumeralcalculator
