@@ -2,8 +2,8 @@
 #include <ctype.h>
 #include <string.h>
 
-static const char* validTokens[] = {"I", "V"};
-static int tokenValues[] = {1, 5};
+static const char* validTokens[] = {"I", "IV", "V"};
+static int tokenValues[] = {1, 4, 5};
 
 int lowercase_string_check(const char* operand)
 {
@@ -23,6 +23,10 @@ int roman_numeral_to_int(const char* operand)
   if(!strcmp(operand, "I"))
   {
     return 1;
+  }
+  else if(!strcmp(operand, "IV"))
+  {
+    return 4;
   }
   else if(!strcmp(operand, "V"))
   {
