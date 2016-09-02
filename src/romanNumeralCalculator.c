@@ -2,6 +2,9 @@
 #include <ctype.h>
 #include <string.h>
 
+static const char* validTokens[] = {"I", "V"};
+static int tokenValues[] = {1, 5};
+
 int lowercase_string_check(const char* operand)
 {
   int i;
@@ -13,6 +16,36 @@ int lowercase_string_check(const char* operand)
     }
   }
   return OK;
+}
+
+int roman_numeral_to_int(const char* operand)
+{
+  if(!strcmp(operand, "I"))
+  {
+    return 1;
+  }
+  else if(!strcmp(operand, "V"))
+  {
+    return 5;
+  }
+}
+
+void int_to_roman_numeral(int value, char* destination)
+{
+  strcpy(destination, "");
+  int lastIndex = sizeof(tokenValues) / sizeof(tokenValues[0]) - 1;
+  while( value != 0 )
+  {
+    if( value >= tokenValues[lastIndex] )
+    {
+      strcat(destination, validTokens[lastIndex]);
+      value -= tokenValues[lastIndex];
+    }
+    else
+    {
+      --lastIndex;
+    }
+  }
 }
 
 int add_roman_numeral(const char* operand1,
@@ -27,6 +60,11 @@ int add_roman_numeral(const char* operand1,
       return INVALID_PARAM;
     }
 
-    strcpy(result, "II");
+    int op1Int = roman_numeral_to_int(operand1);
+    int op2Int = roman_numeral_to_int(operand2);
+
+    int addedValue = op1Int + op2Int;
+
+    int_to_roman_numeral(addedValue, result);
     return OK;
   }

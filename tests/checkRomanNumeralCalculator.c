@@ -13,13 +13,14 @@ START_TEST(test_I_plus_I_equals_II)
 }
 END_TEST
 
-START_TEST(test_V_plus_V_equals_X)
+START_TEST(test_V_plus_I_equals_VI)
 {
   const char* operand1 = "V";
+  const char* operand2 = "I";
   char result[10];
-  int success = add_roman_numeral(operand1, operand1, result);
+  int success = add_roman_numeral(operand1, operand2, result);
 
-  ck_assert_str_eq(result, "X");
+  ck_assert_str_eq(result, "VI");
 }
 END_TEST
 
@@ -55,7 +56,7 @@ Suite * calculator_suite(void)
   tc_core = tcase_create("Core");
 
   tcase_add_test(tc_core, test_I_plus_I_equals_II);
-  tcase_add_test(tc_core, test_V_plus_V_equals_X);
+  tcase_add_test(tc_core, test_V_plus_I_equals_VI);
   tcase_add_test(tc_core, test_successful_operation_returns_OK);
   tcase_add_test(tc_core, test_lower_case_operand_returns_INVALID_PARAM);
   suite_add_tcase(s, tc_core);
@@ -71,7 +72,7 @@ int main(void)
 
     s = calculator_suite();
     sr = srunner_create(s);
-
+    // srunner_set_fork_status (sr, CK_NOFORK);
     srunner_run_all(sr, CK_VERBOSE);
     number_failed = srunner_ntests_failed(sr);
     srunner_free(sr);
