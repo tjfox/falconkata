@@ -28,6 +28,10 @@ int roman_numeral_to_int(const char* operand)
   {
     return 5;
   }
+  else
+  {
+    return 0;
+  }
 }
 
 void int_to_roman_numeral(int value, char* destination)
@@ -62,6 +66,11 @@ int add_roman_numeral(const char* operand1,
 
     int op1Int = roman_numeral_to_int(operand1);
     int op2Int = roman_numeral_to_int(operand2);
+
+    if( op1Int == 0 || op2Int == 0 )
+    {
+      return INVALID_PARAM;
+    }
 
     int addedValue = op1Int + op2Int;
 
