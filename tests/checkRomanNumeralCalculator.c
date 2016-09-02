@@ -291,6 +291,17 @@ START_TEST(test_sub_result_less_than_zero_returns_INVALID_RESULT)
 }
 END_TEST
 
+START_TEST(test_MMCXI_sub_DCII_equals_MDIX)
+{
+  const char * operand1 = "MMCXI";
+  const char * operand2 = "DCII";
+  char result[10];
+
+  int success = sub_roman_numeral(operand1, operand2, result);
+
+  ck_assert_str_eq(result, "MDIX");
+}
+END_TEST
 
 Suite * calculator_suite(void)
 {
@@ -325,7 +336,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_sub_success_returns_OK);
   tcase_add_test(tc_core, test_sub_result_zero_returns_INVALID_RESULT);
   tcase_add_test(tc_core, test_sub_result_less_than_zero_returns_INVALID_RESULT);
-  // tcase_add_test(tc_core, test_MMCXI_sub_DCII_equals_MDIX)
+  tcase_add_test(tc_core, test_MMCXI_sub_DCII_equals_MDIX);
   suite_add_tcase(s, tc_core);
 
   return s;
