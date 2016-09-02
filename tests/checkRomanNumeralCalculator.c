@@ -168,6 +168,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_V_plus_I_equals_VI);
   tcase_add_test(tc_core, test_X_plus_I_equals_XI);
   tcase_add_test(tc_core, test_X_plus_L_equals_LX);
+  tcase_add_test(tc_core, test_L_plus_C_equals_CL);
   tcase_add_test(tc_core, test_successful_add_returns_OK);
   tcase_add_test(tc_core, test_add_lower_case_operand_returns_INVALID_PARAM);
   tcase_add_test(tc_core, test_add_invalid_numeral_returns_INVALID_PARAM);
