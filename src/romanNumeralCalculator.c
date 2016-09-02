@@ -24,6 +24,11 @@ int roman_numeral_to_int(const char* operand)
     }
   }
 
+  if( *operand != '\0' )
+  {
+    value = 0;
+  }
+  
   return value;
 }
 
