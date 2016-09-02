@@ -9,12 +9,16 @@ int roman_numeral_to_int(const char* operand)
 {
   int lastIndex = sizeof(validTokens) / sizeof(validTokens[0]) - 1;
   int value = 0;
-
+  int count = 0;
   while( *operand != '\0' && lastIndex >= 0 )
   {
     const char * match = strstr(operand, validTokens[lastIndex]);
     if( match == operand )
     {
+      if( ++count > 3 ) //We encountered an invalid numeral and can't continue
+      {
+        break;
+      }
       value += tokenValues[lastIndex];
       operand += strlen(validTokens[lastIndex]);
     }
@@ -28,7 +32,7 @@ int roman_numeral_to_int(const char* operand)
   {
     value = 0;
   }
-  
+
   return value;
 }
 
