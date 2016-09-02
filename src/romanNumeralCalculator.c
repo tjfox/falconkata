@@ -80,14 +80,15 @@ void int_to_roman_numeral(int value, char* destination)
   }
 }
 
-int check_result(int result)
+int check_result_and_convert(int value, char* result)
 {
-  if(result <= 0 || result > MAX_VALUE)
+  if(value <= 0 || value > MAX_VALUE)
   {
     return INVALID_RESULT;
   }
   else
   {
+    int_to_roman_numeral(value, result);
     return OK;
   }
 }
@@ -104,13 +105,14 @@ int add_roman_numeral(const char* operand1,
   }
 
   int addedValue = op1Int + op2Int;
+  return check_result_and_convert(addedValue, result);
 
-  if( addedValue > MAX_VALUE )
-  {
-    return INVALID_RESULT;
-  }
-  int_to_roman_numeral(addedValue, result);
-  return OK;
+  // if( check_result(addedValue) )
+  // {
+  //   return INVALID_RESULT;
+  // }
+  // int_to_roman_numeral(addedValue, result);
+  // return OK;
 }
 
 int sub_roman_numeral(const char* operand1,
@@ -125,11 +127,12 @@ int sub_roman_numeral(const char* operand1,
   }
 
   int subValue = op1Int - op2Int;
-  if( check_result(subValue) )
-  {
-    return INVALID_RESULT;
-  }
-
-  int_to_roman_numeral(subValue, result);
-  return OK;
+  return check_result_and_convert(subValue, result);
+  // if( check_result(subValue) )
+  // {
+  //   return INVALID_RESULT;
+  // }
+  //
+  // int_to_roman_numeral(subValue, result);
+  // return OK;
 }
