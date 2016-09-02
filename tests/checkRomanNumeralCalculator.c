@@ -2,17 +2,6 @@
 #include <check.h>
 #include "../src/romanNumeralCalculator.h"
 
-START_TEST(test_i_plus_i_equals_ii)
-{
-  const char * operand1 = "i";
-  char result[10];
-
-  add_roman_numeral(operand1, operand1, result);
-
-  ck_assert_str_eq(result, "ii");
-}
-END_TEST
-
 START_TEST(test_I_plus_I_equals_II)
 {
   const char* operand1 = "I";
@@ -32,7 +21,6 @@ Suite * calculator_suite(void)
   s = suite_create("Calculator");
   tc_core = tcase_create("Core");
 
-  tcase_add_test(tc_core, test_i_plus_i_equals_ii);
   tcase_add_test(tc_core, test_I_plus_I_equals_II);
   suite_add_tcase(s, tc_core);
 
