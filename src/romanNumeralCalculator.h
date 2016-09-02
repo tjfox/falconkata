@@ -1,6 +1,8 @@
 #ifndef ROMANNUMERALCALCULATOR_H
 #define ROMANNUMERALCALCULATOR_H
 
+static const int MAX_NUMERAL_LENGTH = 15;
+
 enum op_success_t
 {
   OK,

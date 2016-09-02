@@ -106,13 +106,6 @@ int add_roman_numeral(const char* operand1,
 
   int addedValue = op1Int + op2Int;
   return check_result_and_convert(addedValue, result);
-
-  // if( check_result(addedValue) )
-  // {
-  //   return INVALID_RESULT;
-  // }
-  // int_to_roman_numeral(addedValue, result);
-  // return OK;
 }
 
 int sub_roman_numeral(const char* operand1,
@@ -128,11 +121,4 @@ int sub_roman_numeral(const char* operand1,
 
   int subValue = op1Int - op2Int;
   return check_result_and_convert(subValue, result);
-  // if( check_result(subValue) )
-  // {
-  //   return INVALID_RESULT;
-  // }
-  //
-  // int_to_roman_numeral(subValue, result);
-  // return OK;
 }

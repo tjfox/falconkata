@@ -5,7 +5,7 @@
 START_TEST(test_I_plus_I_equals_II)
 {
   const char* operand1 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   add_roman_numeral(operand1, operand1, result);
 
@@ -18,7 +18,7 @@ START_TEST(test_II_plus_I_equals_III)
   const char* operand1 = "II";
   const char* operand2 = "I";
 
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   add_roman_numeral(operand1, operand2, result);
 
@@ -31,7 +31,7 @@ START_TEST(test_IV_plus_I_equals_V)
 {
   const char* operand1 = "IV";
   const char* operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "V");
@@ -42,7 +42,7 @@ START_TEST(test_V_plus_I_equals_VI)
 {
   const char* operand1 = "V";
   const char* operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "VI");
@@ -53,7 +53,7 @@ START_TEST(test_X_plus_I_equals_XI)
 {
   const char* operand1 = "X";
   const char* operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "XI");
@@ -64,7 +64,7 @@ START_TEST(test_IX_plus_I_equals_X)
 {
   const char* operand1 = "IX";
   const char* operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "X");
@@ -75,7 +75,7 @@ START_TEST(test_X_plus_L_equals_LX)
 {
   const char* operand1 = "X";
   const char* operand2 = "L";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "LX");
@@ -86,7 +86,7 @@ START_TEST(test_L_plus_C_equals_CL)
 {
   const char* operand1 = "L";
   const char* operand2 = "C";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "CL");
@@ -97,7 +97,7 @@ START_TEST(test_XL_plus_C_equals_CXL)
 {
   const char* operand1 = "XL";
   const char* operand2 = "C";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "CXL");
@@ -108,7 +108,7 @@ START_TEST(test_XC_plus_D_equals_DXC)
 {
 const char* operand1 = "XC";
 const char* operand2 = "D";
-char result[10];
+char result[MAX_NUMERAL_LENGTH];
 int success = add_roman_numeral(operand1, operand2, result);
 
 ck_assert_str_eq(result, "DXC");
@@ -119,7 +119,7 @@ START_TEST(test_C_plus_D_equals_DC)
 {
   const char* operand1 = "C";
   const char* operand2 = "D";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "DC");
@@ -130,7 +130,7 @@ START_TEST(test_CD_plus_M_equals_MCD)
 {
   const char* operand1 = "CD";
   const char* operand2 = "M";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "MCD");
@@ -141,7 +141,7 @@ START_TEST(test_D_plus_M_equals_MD)
 {
   const char* operand1 = "D";
   const char* operand2 = "M";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "MD");
@@ -152,7 +152,7 @@ START_TEST(test_CM_plus_CM_equals_MDCCC)
 {
   const char* operand1 = "CM";
   const char* operand2 = "CM";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "MDCCC");
@@ -164,7 +164,7 @@ START_TEST(test_MMCCXX_plus_I_equals_MMCCXXI)
 {
   const char* operand1 = "MMCCXX";
   const char* operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "MMCCXXI");
@@ -175,7 +175,7 @@ END_TEST
 START_TEST(test_successful_add_returns_OK)
 {
   const char * operand1 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand1, result);
 
@@ -187,7 +187,7 @@ START_TEST(test_add_lower_case_operand_returns_INVALID_PARAM)
 {
   const char * operand1 = "I";
   const char * operand2 = "i";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand2, result);
 
@@ -199,7 +199,7 @@ START_TEST(test_add_invalid_numeral_returns_INVALID_PARAM)
 {
   const char * operand1 = "I";
   const char * operand2 = "S";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand2, result);
 
@@ -211,7 +211,7 @@ START_TEST(test_invalid_numeral_ordering_returns_INVALID_PARAM)
 {
   const char * operand1 = "IIIV";
   const char * operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand2, result);
 
@@ -223,7 +223,7 @@ START_TEST(test_add_IIII_returns_INVALID_PARAM)
 {
   const char * operand1 = "IIII";
   const char * operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand2, result);
 
@@ -235,7 +235,7 @@ START_TEST(test_add_VV_returns_INVALID_PARAM)
 {
   const char * operand1 = "VV";
   const char * operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand2, result);
 
@@ -247,7 +247,7 @@ START_TEST(test_add_result_greater_than_3999_returns_INVALID_RESULT)
 {
   const char * operand1 = "MM";
   const char * operand2 = "MM";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = add_roman_numeral(operand1, operand2, result);
 
@@ -259,7 +259,7 @@ START_TEST(test_sub_success_returns_OK)
 {
   const char * operand1 = "II";
   const char * operand2 = "I";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = sub_roman_numeral(operand1, operand2, result);
 
@@ -271,7 +271,7 @@ START_TEST(test_sub_result_zero_returns_INVALID_RESULT)
 {
   const char * operand1 = "II";
   const char * operand2 = "II";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = sub_roman_numeral(operand1, operand2, result);
 
@@ -283,7 +283,7 @@ START_TEST(test_sub_result_less_than_zero_returns_INVALID_RESULT)
 {
   const char * operand1 = "I";
   const char * operand2 = "II";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = sub_roman_numeral(operand1, operand2, result);
 
@@ -295,7 +295,7 @@ START_TEST(test_MMCXI_sub_DCII_equals_MDIX)
 {
   const char * operand1 = "MMCXI";
   const char * operand2 = "DCII";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = sub_roman_numeral(operand1, operand2, result);
 
@@ -307,7 +307,7 @@ START_TEST(test_sub_invalid_numeral_returns_INVALID_PARAM)
 {
   const char * operand1 = "I";
   const char * operand2 = "S";
-  char result[10];
+  char result[MAX_NUMERAL_LENGTH];
 
   int success = sub_roman_numeral(operand1, operand2, result);
 
