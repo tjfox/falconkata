@@ -2,29 +2,42 @@
 #include <ctype.h>
 #include <string.h>
 
-static const char* validTokens[] = {"I", "IV", "V"};
-static int tokenValues[] = {1, 4, 5};
+typedef struct numeral numeral;
+struct numeral
+{
+  const char* token;
+  int numeralValue;
+  int maxNumToken;
+};
+
+static const numeral VALID_TOKENS[] = {
+  {.token = "V",  .numeralValue = 5, .maxNumToken = 1},
+  {.token = "IV", .numeralValue = 4, .maxNumToken = 1},
+  {.token = "I",  .numeralValue = 1, .maxNumToken = 3}
+};
+
+static const int NUM_TOKENS = sizeof(VALID_TOKENS) / sizeof(VALID_TOKENS[0]);
 
 int roman_numeral_to_int(const char* operand)
 {
-  int lastIndex = sizeof(validTokens) / sizeof(validTokens[0]) - 1;
+  int tokenIndex = 0;
   int value = 0;
   int count = 0;
-  while( *operand != '\0' && lastIndex >= 0 )
+  while( *operand != '\0' && tokenIndex < NUM_TOKENS )
   {
-    const char * match = strstr(operand, validTokens[lastIndex]);
+    const char * match = strstr(operand, VALID_TOKENS[tokenIndex].token);
     if( match == operand )
     {
-      if( ++count > 3 ) //We encountered an invalid numeral and can't continue
+      if( ++count > VALID_TOKENS[tokenIndex].maxNumToken ) //We encountered an invalid numeral and can't continue
       {
         break;
       }
-      value += tokenValues[lastIndex];
-      operand += strlen(validTokens[lastIndex]);
+      value += VALID_TOKENS[tokenIndex].numeralValue;
+      operand += strlen(VALID_TOKENS[tokenIndex].token);
     }
     else
     {
-      --lastIndex;
+      ++tokenIndex;
     }
   }
 
@@ -39,17 +52,17 @@ int roman_numeral_to_int(const char* operand)
 void int_to_roman_numeral(int value, char* destination)
 {
   strcpy(destination, "");
-  int lastIndex = sizeof(tokenValues) / sizeof(tokenValues[0]) - 1;
+  int tokenIndex = 0;
   while( value != 0 )
   {
-    if( value >= tokenValues[lastIndex] )
+    if( value >= VALID_TOKENS[tokenIndex].numeralValue )
     {
-      strcat(destination, validTokens[lastIndex]);
-      value -= tokenValues[lastIndex];
+      strcat(destination, VALID_TOKENS[tokenIndex].token);
+      value -= VALID_TOKENS[tokenIndex].numeralValue;
     }
     else
     {
-      --lastIndex;
+      ++tokenIndex;
     }
   }
 }
