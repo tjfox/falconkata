@@ -20,22 +20,24 @@ int lowercase_string_check(const char* operand)
 
 int roman_numeral_to_int(const char* operand)
 {
-  if(!strcmp(operand, "I"))
+  int lastIndex = sizeof(validTokens) / sizeof(validTokens[0]) - 1;
+  int value = 0;
+
+  while( *operand != '\0' && lastIndex >= 0 )
   {
-    return 1;
+    const char * match = strstr(operand, validTokens[lastIndex]);
+    if( match == operand )
+    {
+      value += tokenValues[lastIndex];
+      operand += strlen(validTokens[lastIndex]);
+    }
+    else
+    {
+      --lastIndex;
+    }
   }
-  else if(!strcmp(operand, "IV"))
-  {
-    return 4;
-  }
-  else if(!strcmp(operand, "V"))
-  {
-    return 5;
-  }
-  else
-  {
-    return 0;
-  }
+
+  return value;
 }
 
 void int_to_roman_numeral(int value, char* destination)
