@@ -5,19 +5,6 @@
 static const char* validTokens[] = {"I", "IV", "V"};
 static int tokenValues[] = {1, 4, 5};
 
-int lowercase_string_check(const char* operand)
-{
-  int i;
-  for(i = 0; operand[i] != '\0'; ++i)
-  {
-    if(islower(operand[i]))
-    {
-      return INVALID_PARAM;
-    }
-  }
-  return OK;
-}
-
 int roman_numeral_to_int(const char* operand)
 {
   int lastIndex = sizeof(validTokens) / sizeof(validTokens[0]) - 1;
@@ -61,15 +48,6 @@ void int_to_roman_numeral(int value, char* destination)
 int add_roman_numeral(const char* operand1,
   const char* operand2, char* result)
   {
-    if(lowercase_string_check(operand1) != OK)
-    {
-      return INVALID_PARAM;
-    }
-    else if(lowercase_string_check(operand2) != OK)
-    {
-      return INVALID_PARAM;
-    }
-
     int op1Int = roman_numeral_to_int(operand1);
     int op2Int = roman_numeral_to_int(operand2);
 
