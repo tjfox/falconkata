@@ -11,6 +11,7 @@ struct numeral
 };
 
 static const numeral VALID_TOKENS[] = {
+  {.token = "M",  .numeralValue = 1000, .maxNumToken = 3},
   {.token = "D",  .numeralValue = 500,  .maxNumToken = 1},
   {.token = "C",  .numeralValue = 100,  .maxNumToken = 3},
   {.token = "L",  .numeralValue = 50,   .maxNumToken = 1},
