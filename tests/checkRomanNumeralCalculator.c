@@ -223,6 +223,18 @@ START_TEST(test_sub_result_zero_returns_INVALID_RESULT)
 }
 END_TEST
 
+START_TEST(test_sub_result_less_than_zero_returns_INVALID_RESULT)
+{
+  const char * operand1 = "I";
+  const char * operand2 = "II";
+  char result[10];
+
+  int success = sub_roman_numeral(operand1, operand2, result);
+
+  ck_assert_int_eq(success, INVALID_RESULT);
+}
+END_TEST
+
 Suite * calculator_suite(void)
 {
   Suite *s;
@@ -250,6 +262,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_add_result_greater_than_3999_returns_INVALID_RESULT);
   tcase_add_test(tc_core, test_sub_success_returns_OK);
   tcase_add_test(tc_core, test_sub_result_zero_returns_INVALID_RESULT);
+  tcase_add_test(tc_core, test_sub_result_less_than_zero_returns_INVALID_RESULT);
   suite_add_tcase(s, tc_core);
 
   return s;
