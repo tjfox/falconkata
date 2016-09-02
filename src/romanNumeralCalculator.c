@@ -2,6 +2,8 @@
 #include <ctype.h>
 #include <string.h>
 
+static const int MAX_VALUE = 3999;
+
 typedef struct numeral numeral;
 struct numeral
 {
@@ -85,6 +87,10 @@ int add_roman_numeral(const char* operand1,
 
     int addedValue = op1Int + op2Int;
 
+    if( addedValue > MAX_VALUE )
+    {
+      return INVALID_RESULT;
+    }
     int_to_roman_numeral(addedValue, result);
     return OK;
   }
