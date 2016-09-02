@@ -62,14 +62,26 @@ END_TEST
 
 START_TEST(test_X_plus_L_equals_LX)
 {
-  const char* operand1 = "L";
-  const char* operand2 = "X";
+  const char* operand1 = "C";
+  const char* operand2 = "L";
   char result[10];
   int success = add_roman_numeral(operand1, operand2, result);
 
   ck_assert_str_eq(result, "LX");
 }
 END_TEST
+
+START_TEST(test_L_plus_C_equals_CL)
+{
+  const char* operand1 = "L";
+  const char* operand2 = "C";
+  char result[10];
+  int success = add_roman_numeral(operand1, operand2, result);
+
+  ck_assert_str_eq(result, "CL");
+}
+END_TEST
+
 
 START_TEST(test_successful_add_returns_OK)
 {
