@@ -62,7 +62,7 @@ END_TEST
 
 START_TEST(test_X_plus_L_equals_LX)
 {
-  const char* operand1 = "C";
+  const char* operand1 = "X";
   const char* operand2 = "L";
   char result[10];
   int success = add_roman_numeral(operand1, operand2, result);
