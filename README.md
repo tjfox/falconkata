@@ -15,9 +15,9 @@ MAX_NUMERAL_LENGTH defined in the library header.
 The functions will place the result of the operation in the result buffer and
 provide a return the following codes to verify results of the operation.
 
-OK - Operation successful
-INVALID_PARAM - Parameters are invalid
-INVALID_RESULT - Results of the operation are invalid
+OK - Operation successful 
+INVALID_PARAM - Parameters are invalid 
+INVALID_RESULT - Results of the operation are invalid 
 
 The code can be compiled by running make in the root project directory.
 After building tests can be run by ./tests/testromannumeralcalculator
