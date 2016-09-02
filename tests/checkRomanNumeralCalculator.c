@@ -148,6 +148,18 @@ START_TEST(test_D_plus_M_equals_MD)
 }
 END_TEST
 
+START_TEST(test_CM_plus_CM_equals_MDCCC)
+{
+  const char* operand1 = "CM";
+  const char* operand2 = "CM";
+  char result[10];
+  int success = add_roman_numeral(operand1, operand2, result);
+
+  ck_assert_str_eq(result, "MDCCC");
+}
+END_TEST
+
+
 START_TEST(test_MMCCXX_plus_I_equals_MMCCXXI)
 {
   const char* operand1 = "MMCCXX";
@@ -301,6 +313,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_XC_plus_D_equals_DXC);
   tcase_add_test(tc_core, test_CD_plus_M_equals_MCD);
   tcase_add_test(tc_core, test_D_plus_M_equals_MD);
+  tcase_add_test(tc_core, test_CM_plus_CM_equals_MDCCC);
   tcase_add_test(tc_core, test_MMCCXX_plus_I_equals_MMCCXXI);
   tcase_add_test(tc_core, test_successful_add_returns_OK);
   tcase_add_test(tc_core, test_add_lower_case_operand_returns_INVALID_PARAM);
@@ -327,7 +340,7 @@ int main(void)
     s = calculator_suite();
     sr = srunner_create(s);
     // srunner_set_fork_status (sr, CK_NOFORK);
-    srunner_run_all(sr, CK_VERBOSE);
+    srunner_run_all(sr, CK_NORMAL);
     number_failed = srunner_ntests_failed(sr);
     srunner_free(sr);
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
