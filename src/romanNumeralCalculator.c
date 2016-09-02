@@ -80,6 +80,18 @@ void int_to_roman_numeral(int value, char* destination)
   }
 }
 
+int check_result(int result)
+{
+  if(result <= 0 || result > MAX_VALUE)
+  {
+    return INVALID_RESULT;
+  }
+  else
+  {
+    return OK;
+  }
+}
+
 int add_roman_numeral(const char* operand1,
   const char* operand2, char* result)
 {
@@ -107,8 +119,13 @@ int sub_roman_numeral(const char* operand1,
   int op1Int = roman_numeral_to_int(operand1);
   int op2Int = roman_numeral_to_int(operand2);
 
+  if( op1Int == 0 || op2Int == 0 )
+  {
+    return INVALID_PARAM;
+  }
+
   int subValue = op1Int - op2Int;
-  if( subValue <= 0 )
+  if( check_result(subValue) )
   {
     return INVALID_RESULT;
   }
