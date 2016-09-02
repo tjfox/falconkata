@@ -115,6 +115,17 @@ START_TEST(test_C_plus_D_equals_DC)
 }
 END_TEST
 
+START_TEST(test_CD_plus_M_equals_MCD)
+{
+  const char* operand1 = "CD";
+  const char* operand2 = "M";
+  char result[10];
+  int success = add_roman_numeral(operand1, operand2, result);
+
+  ck_assert_str_eq(result, "MCD");
+}
+END_TEST
+
 START_TEST(test_D_plus_M_equals_MD)
 {
   const char* operand1 = "D";
@@ -276,6 +287,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_L_plus_C_equals_CL);
   tcase_add_test(tc_core, test_XL_plus_C_equals_CXL);
   tcase_add_test(tc_core, test_C_plus_D_equals_DC);
+  tcase_add_test(tc_core, test_CD_plus_M_equals_MCD);
   tcase_add_test(tc_core, test_D_plus_M_equals_MD);
   tcase_add_test(tc_core, test_MMCCXX_plus_I_equals_MMCCXXI);
   tcase_add_test(tc_core, test_successful_add_returns_OK);
