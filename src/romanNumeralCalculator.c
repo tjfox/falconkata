@@ -102,9 +102,10 @@ int sub_roman_numeral(const char* operand1,
   int op1Int = roman_numeral_to_int(operand1);
   int op2Int = roman_numeral_to_int(operand2);
 
-  if( op1Int - op2Int == 0 )
+  if( op1Int - op2Int <= 0 )
   {
     return INVALID_RESULT;
   }
+
   return OK;
 }
