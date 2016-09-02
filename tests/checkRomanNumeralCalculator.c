@@ -13,6 +13,17 @@ START_TEST(test_I_plus_I_equals_II)
 }
 END_TEST
 
+START_TEST(test_IV_plus_I_equals_V)
+{
+  const char* operand1 = "IV";
+  const char* operand2 = "I";
+  char result[10];
+  int success = add_roman_numeral(operand1, operand2, result);
+
+  ck_assert_str_eq(result, "V");
+}
+END_TEST
+
 START_TEST(test_V_plus_I_equals_VI)
 {
   const char* operand1 = "V";
@@ -68,6 +79,7 @@ Suite * calculator_suite(void)
   tc_core = tcase_create("Core");
 
   tcase_add_test(tc_core, test_I_plus_I_equals_II);
+  tcase_add_test(tc_core, test_IV_plus_I_equals_V);
   tcase_add_test(tc_core, test_V_plus_I_equals_VI);
   tcase_add_test(tc_core, test_successful_add_returns_OK);
   tcase_add_test(tc_core, test_add_lower_case_operand_returns_INVALID_PARAM);
