@@ -76,21 +76,27 @@ void int_to_roman_numeral(int value, char* destination)
 
 int add_roman_numeral(const char* operand1,
   const char* operand2, char* result)
+{
+  int op1Int = roman_numeral_to_int(operand1);
+  int op2Int = roman_numeral_to_int(operand2);
+
+  if( op1Int == 0 || op2Int == 0 )
   {
-    int op1Int = roman_numeral_to_int(operand1);
-    int op2Int = roman_numeral_to_int(operand2);
-
-    if( op1Int == 0 || op2Int == 0 )
-    {
-      return INVALID_PARAM;
-    }
-
-    int addedValue = op1Int + op2Int;
-
-    if( addedValue > MAX_VALUE )
-    {
-      return INVALID_RESULT;
-    }
-    int_to_roman_numeral(addedValue, result);
-    return OK;
+    return INVALID_PARAM;
   }
+
+  int addedValue = op1Int + op2Int;
+
+  if( addedValue > MAX_VALUE )
+  {
+    return INVALID_RESULT;
+  }
+  int_to_roman_numeral(addedValue, result);
+  return OK;
+}
+
+int sub_roman_numeral(const char* operand1,
+    const char* operand2, char* result)
+{
+
+}

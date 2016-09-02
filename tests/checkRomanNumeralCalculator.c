@@ -188,6 +188,17 @@ START_TEST(test_add_result_greater_than_3999_returns_INVALID_RESULT)
 }
 END_TEST
 
+START_TEST(test_sub_success_returns_OK)
+{
+  const char * operand1 = "II";
+  const char * operand2 = "I";
+  char result[10];
+
+  int success = sub_roman_numeral(operand1, operand2, result);
+
+  ck_assert_int_eq(success, OK);
+}
+END_TEST
 
 Suite * calculator_suite(void)
 {
@@ -213,6 +224,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_add_IIII_returns_INVALID_PARAM);
   tcase_add_test(tc_core, test_add_VV_returns_INVALID_PARAM);
   tcase_add_test(tc_core, test_add_result_greater_than_3999_returns_INVALID_RESULT);
+  tcase_add_test(tc_core, test_sub_success_returns_OK);
   suite_add_tcase(s, tc_core);
 
   return s;
