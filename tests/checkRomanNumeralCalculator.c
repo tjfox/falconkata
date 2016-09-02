@@ -13,6 +13,17 @@ START_TEST(test_i_plus_i_equals_ii)
 }
 END_TEST
 
+START_TEST(test_I_plus_I_equals_II)
+{
+  const char* operand1 = "I";
+  char result[10];
+
+  add_roman_numeral(operand1, operand1, result);
+
+  ck_assert_str_eq(result, "II");
+}
+END_TEST
+
 Suite * calculator_suite(void)
 {
   Suite *s;
@@ -22,6 +33,7 @@ Suite * calculator_suite(void)
   tc_core = tcase_create("Core");
 
   tcase_add_test(tc_core, test_i_plus_i_equals_ii);
+  tcase_add_test(tc_core, test_I_plus_I_equals_II);
   suite_add_tcase(s, tc_core);
 
   return s;
