@@ -3,7 +3,8 @@
 
 enum op_success_t
 {
-  OK
+  OK,
+  INVALID_PARAM
 };
 
 int add_roman_numeral(const char* operand1,

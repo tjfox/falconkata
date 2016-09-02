@@ -24,6 +24,18 @@ START_TEST(test_successful_operation_returns_OK)
 }
 END_TEST
 
+START_TEST(test_lower_case_operand_returns_INVALID_PARAM)
+{
+  const char * operand1 = "I";
+  const char * operand2 = "i";
+  char result[10];
+
+  int success = add_roman_numeral(operand1, operand2, result);
+
+  ck_assert_int_eq(success, INVALID_PARAM);
+}
+END_TEST
+
 Suite * calculator_suite(void)
 {
   Suite *s;
@@ -34,6 +46,7 @@ Suite * calculator_suite(void)
 
   tcase_add_test(tc_core, test_I_plus_I_equals_II);
   tcase_add_test(tc_core, test_successful_operation_returns_OK);
+  tcase_add_test(tc_core, test_lower_case_operand_returns_INVALID_PARAM);
   suite_add_tcase(s, tc_core);
 
   return s;
