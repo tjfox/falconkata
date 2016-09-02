@@ -44,6 +44,7 @@ int roman_numeral_to_int(const char* operand)
     }
     else
     {
+      count = 0;
       ++tokenIndex;
     }
   }
