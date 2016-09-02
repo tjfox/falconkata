@@ -17,6 +17,7 @@ static const numeral VALID_TOKENS[] = {
   {.token = "D",    .numeralValue = 500,  .maxNumToken = 1},
   {.token = "CD",   .numeralValue = 400,  .maxNumToken = 1},
   {.token = "C",    .numeralValue = 100,  .maxNumToken = 3},
+  {.token = "XC",   .numeralValue = 90,   .maxNumToken = 1},
   {.token = "L",    .numeralValue = 50,   .maxNumToken = 1},
   {.token = "XL",   .numeralValue = 40,   .maxNumToken = 1},
   {.token = "X",    .numeralValue = 10,   .maxNumToken = 3},
