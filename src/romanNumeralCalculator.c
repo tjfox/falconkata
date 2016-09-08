@@ -40,7 +40,7 @@ int roman_numeral_to_int(const char* operand)
     const char * match = strstr(operand, VALID_TOKENS[tokenIndex].token);
     if( match == operand )
     {
-      if( ++count > VALID_TOKENS[tokenIndex].maxNumToken ) //We encountered an invalid numeral and can't continue
+      if( ++count > VALID_TOKENS[tokenIndex].maxNumToken )
       {
         break;
       }
@@ -80,7 +80,27 @@ void int_to_roman_numeral(int value, char* destination)
   }
 }
 
-int check_result_and_convert(int value, char* result)
+int check_param_and_convert_to_int(const char* operand1, const char* operand2,
+  int* intOut1, int* intOut2)
+{
+  if( operand1 == NULL || operand2 == NULL )
+  {
+    return INVALID_PARAM;
+  }
+
+  *intOut1 = roman_numeral_to_int(operand1);
+  *intOut2 = roman_numeral_to_int(operand2);
+
+  if( *intOut1 == 0 || *intOut2 == 0 )
+  {
+    return INVALID_PARAM;
+  }
+
+  return OK;
+
+}
+
+int check_result_and_convert_to_roman_numeral(int value, char* result)
 {
   if(value <= 0 || value > MAX_VALUE)
   {
@@ -96,39 +116,37 @@ int check_result_and_convert(int value, char* result)
 int add_roman_numeral(const char* operand1,
   const char* operand2, char* result)
 {
-  if( operand1 == NULL || operand2 == NULL )
+  int op1Int, op2Int;
+
+  int conversion_success =
+    check_param_and_convert_to_int(operand1, operand2, &op1Int, &op2Int);
+
+  if(conversion_success != OK)
   {
-    return INVALID_PARAM;
+    return conversion_success;
   }
-
-  int op1Int = roman_numeral_to_int(operand1);
-  int op2Int = roman_numeral_to_int(operand2);
-
-  if( op1Int == 0 || op2Int == 0 )
+  else
   {
-    return INVALID_PARAM;
+    int addedValue = op1Int + op2Int;
+    return check_result_and_convert_to_roman_numeral(addedValue, result);
   }
-
-  int addedValue = op1Int + op2Int;
-  return check_result_and_convert(addedValue, result);
 }
 
 int sub_roman_numeral(const char* operand1,
     const char* operand2, char* result)
 {
-  if( operand1 == NULL || operand2 == NULL )
-  {
-    return INVALID_PARAM;
-  }
-  
-  int op1Int = roman_numeral_to_int(operand1);
-  int op2Int = roman_numeral_to_int(operand2);
+  int op1Int, op2Int;
 
-  if( op1Int == 0 || op2Int == 0 )
-  {
-    return INVALID_PARAM;
-  }
+  int conversion_success =
+    check_param_and_convert_to_int(operand1, operand2, &op1Int, &op2Int);
 
-  int subValue = op1Int - op2Int;
-  return check_result_and_convert(subValue, result);
+  if(conversion_success != OK)
+  {
+    return conversion_success;
+  }
+  else
+  {
+    int subValue = op1Int - op2Int;
+    return check_result_and_convert_to_roman_numeral(subValue, result);
+  }
 }
