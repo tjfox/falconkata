@@ -315,6 +315,18 @@ START_TEST(test_sub_invalid_numeral_returns_INVALID_PARAM)
 }
 END_TEST
 
+START_TEST(test_add_null_ptr_returns_INVALID_PARAM)
+{
+  const char * operand1 = "I";
+  const char * operand2 = NULL;
+  char result[MAX_NUMERAL_LENGTH];
+
+  int success = add_roman_numeral(operand1, operand2, result);
+
+  ck_assert_int_eq(success, INVALID_PARAM);
+}
+END_TEST
+
 Suite * calculator_suite(void)
 {
   Suite *s;
@@ -350,6 +362,7 @@ Suite * calculator_suite(void)
   tcase_add_test(tc_core, test_sub_result_less_than_zero_returns_INVALID_RESULT);
   tcase_add_test(tc_core, test_MMCXI_sub_DCII_equals_MDIX);
   tcase_add_test(tc_core, test_sub_invalid_numeral_returns_INVALID_PARAM);
+  tcase_add_test(tc_core, test_add_null_ptr_returns_INVALID_PARAM);
   suite_add_tcase(s, tc_core);
 
   return s;
