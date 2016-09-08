@@ -96,6 +96,11 @@ int check_result_and_convert(int value, char* result)
 int add_roman_numeral(const char* operand1,
   const char* operand2, char* result)
 {
+  if( operand1 == NULL || operand2 == NULL )
+  {
+    return INVALID_PARAM;
+  }
+
   int op1Int = roman_numeral_to_int(operand1);
   int op2Int = roman_numeral_to_int(operand2);
 
